@@ -15,9 +15,13 @@ body {
 /* ================= HEADER ================= */
 .hero {
   height: 320px;
-  background: url("batununggal.jpg") center / cover no-repeat;
+  background-image: url("./batununggal.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
 }
+
 
 .hero::before {
   content: "";
