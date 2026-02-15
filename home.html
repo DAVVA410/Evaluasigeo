@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Home - Evaluasi Geografi</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<header>
+  <div class="header-text">
+    <h1>Evaluasi Geografi</h1>
+    <p>Mochamad Dava Syaputra | XI-2 / GEO 1</p>
+  </div>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="sejarah.html">Sejarah</a>
+  <a href="air.html">Air</a>
+  <a href="udara.html">Udara</a>
+  <a href="tanah.html">Tanah</a>
+  <a href="analisis.html">Analisis</a>
+</nav>
+
+
+<section>
+  <h2>Kecamatan Batununggal</h2>
+  <p>
+    Kecamatan Batununggal merupakan salah satu kecamatan di Kota Bandung
+    yang berkembang pesat dengan dominasi kawasan permukiman, perdagangan,
+    dan industri kecil.
+  </p>
+
+  <div id="map"></div>
+</section>
+
+<section>
+  <h2>Fasilitas Pendidikan</h2>
+
+  <div class="slider">
+    <button class="prev" onclick="prevSlide()">❮</button>
+    <img id="slideImage" src="">
+    <div class="caption" id="captionText"></div>
+    <button class="next" onclick="nextSlide()">❯</button>
+  </div>
+</section>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+var map = L.map('map').setView([-6.9195, 107.6363], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+L.marker([-6.9195, 107.6363]).addTo(map)
+  .bindPopup("Kecamatan Batununggal");
+
+const slides = [
+  { img: "https://source.unsplash.com/800x600/?elementary-school,indonesia", text: "SDN Kacapiring" },
+  { img: "https://source.unsplash.com/800x600/?middle-school,indonesia", text: "SMP Negeri 20 Bandung" },
+  { img: "https://source.unsplash.com/800x600/?high-school,indonesia", text: "SMA di Batununggal" }
+];
+
+let index = 0;
+const slideImage = document.getElementById("slideImage");
+const captionText = document.getElementById("captionText");
+
+function showSlide(i) {
+  slideImage.src = slides[i].img;
+  captionText.textContent = slides[i].text;
+}
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
+}
+showSlide(index);
+setInterval(nextSlide, 4000);
+</script>
+
+</body>
+</html>
