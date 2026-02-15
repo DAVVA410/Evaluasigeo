@@ -110,3 +110,52 @@ h2 {
 
 .prev { left: 10px; }
 .next { right: 10px; }
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #081522;
+  color: #cfd8e3;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;              /* INI KUNCI CENTER */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;     /* TENGAH */
+  gap: 40px;
+  text-align: center;          /* ISI TENGAH */
+}
+
+.footer-box {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+.footer-box h3 {
+  color: #4da3ff;
+  margin-bottom: 12px;
+}
+
+.footer-box p,
+.footer-box a {
+  font-size: 14px;
+  color: #cfd8e3;
+  text-decoration: none;
+}
+
+.footer-box a:hover {
+  color: #4da3ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #9fb4cc;
+  border-top: 1px solid #1f3b57;
+  padding-top: 15px;
+}
+
