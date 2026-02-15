@@ -15,7 +15,7 @@ body {
 /* ================= HEADER ================= */
 .hero {
   height: 320px;
-  background: url("foto/batununggal.jpg") center / cover no-repeat;
+  background: urlfoto/batununggal.jpg center / cover no-repeat;
   position: relative;
 }
 
