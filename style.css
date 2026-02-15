@@ -15,7 +15,7 @@ body {
 /* ================= HEADER ================= */
 .hero {
   height: 320px;
-  background: urlfoto/batununggal.jpg center / cover no-repeat;
+  background: url("batununggal.jpg") center / cover no-repeat;
   position: relative;
 }
 
@@ -108,11 +108,12 @@ body {
   font-size: 14.5px;
 }
 
-/* ================= MAP ================= */
-#map {
-  margin-top: 20px;
-  height: 380px;
+/* ================= IMAGE CONTENT ================= */
+.image-content {
   width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 20px auto;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
