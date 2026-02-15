@@ -1,119 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Home - Evaluasi Geografi</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <meta charset="UTF-8">
+  <title>Evaluasi Geografi - Batununggal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
 <body>
 
-<header>
-  <div class="header-text">
+<!-- ===== HEADER ===== -->
+<header class="hero">
+  <div class="hero-overlay">
     <h1>Evaluasi Geografi</h1>
-    <p>Mochamad Dava Syaputra | XI-2 / GEO 1</p>
+    <p>Mochamad Dava Syaputra<br>XI-2 / GEO 1</p>
   </div>
 </header>
 
-<nav>
-  <a href="index.html">Home</a>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <a href="#home">Home</a>
   <a href="sejarah.html">Sejarah</a>
   <a href="air.html">Air</a>
   <a href="udara.html">Udara</a>
   <a href="tanah.html">Tanah</a>
   <a href="analisis.html">Analisis</a>
+  <a href="sumber.html">Sumber</a>
 </nav>
 
-
-<section>
+<!-- ===== HOME ===== -->
+<section id="home" class="section">
   <h2>Kecamatan Batununggal</h2>
   <p>
-    Kecamatan Batununggal merupakan salah satu kecamatan di Kota Bandung
-    yang berkembang pesat dengan dominasi kawasan permukiman, perdagangan,
-    dan industri kecil.
+    Kecamatan Batununggal merupakan salah satu kecamatan di Kota Bandung yang memiliki
+    peran penting dalam bidang permukiman, pendidikan, serta aktivitas ekonomi masyarakat.
+    Wilayah ini didominasi kawasan perkotaan dengan kepadatan penduduk yang relatif tinggi.
   </p>
 
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>Letak & Batas Wilayah</h3>
+      <p>
+        Batununggal berada di bagian selatan Kota Bandung.
+        Berbatasan dengan Kecamatan Lengkong, Kiaracondong,
+        Bandung Kidul, dan Regol.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Penduduk</h3>
+      <p>
+        Jumlah penduduk Kecamatan Batununggal tergolong padat.
+        Mayoritas penduduk berada pada usia produktif sehingga
+        mendukung aktivitas ekonomi dan jasa.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Sumber Daya Manusia</h3>
+      <p>
+        SDM di Batununggal cukup baik dengan tingkat pendidikan
+        yang beragam. Terdapat banyak sekolah dari tingkat dasar
+        hingga menengah.
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>Sumber Daya Alam</h3>
+      <p>
+        SDA di Batununggal terbatas karena merupakan kawasan
+        perkotaan. Namun pemanfaatan lahan difokuskan pada
+        permukiman, fasilitas umum, dan ruang terbuka.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section class="section">
+  <h2>Peta Kecamatan Batununggal</h2>
   <div id="map"></div>
 </section>
 
-<section>
+<!-- ===== FASILITAS PENDIDIKAN ===== -->
+<section class="section">
   <h2>Fasilitas Pendidikan</h2>
 
   <div class="slider">
+    <img id="slideImage" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/School_building.jpg">
+    <div class="slide-caption" id="slideCaption">SDN Kacapiring</div>
+
     <button class="prev" onclick="prevSlide()">❮</button>
-    <img id="slideImage" src="">
-    <div class="caption" id="captionText"></div>
     <button class="next" onclick="nextSlide()">❯</button>
   </div>
 </section>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-var map = L.map('map').setView([-6.9195, 107.6363], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-L.marker([-6.9195, 107.6363]).addTo(map)
-  .bindPopup("Kecamatan Batununggal");
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>© 2026 Evaluasi Geografi | Mochamad Dava Syaputra</p>
+</footer>
 
-const slides = [
-  { img: "https://source.unsplash.com/800x600/?elementary-school,indonesia", text: "SDN Kacapiring" },
-  { img: "https://source.unsplash.com/800x600/?middle-school,indonesia", text: "SMP Negeri 20 Bandung" },
-  { img: "https://source.unsplash.com/800x600/?high-school,indonesia", text: "SMA di Batununggal" }
+<!-- ===== SCRIPT ===== -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+/* ===== MAP ===== */
+var map = L.map('map').setView([-6.9318, 107.6353], 14);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+/* Perkiraan batas Kecamatan Batununggal */
+var batununggalArea = {
+  "type": "Feature",
+  "properties": { "name": "Kecamatan Batununggal" },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [107.628, -6.925],
+      [107.642, -6.925],
+      [107.646, -6.936],
+      [107.635, -6.944],
+      [107.625, -6.936],
+      [107.628, -6.925]
+    ]]
+  }
+};
+
+L.geoJSON(batununggalArea, {
+  style: {
+    color: "#0a1f44",
+    weight: 2,
+    fillColor: "#1e3a8a",
+    fillOpacity: 0.3
+  }
+}).addTo(map);
+
+/* ===== SLIDER ===== */
+var slides = [
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/School_building.jpg",
+    caption: "SDN Kacapiring"
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/School_Indonesia.jpg",
+    caption: "SMP Negeri 20 Bandung"
+  },
+  {
+    img: "https://upload.wikimedia.org/wikipedia/commons/5/5a/High_school_Indonesia.jpg",
+    caption: "SMA di Kecamatan Batununggal"
+  }
 ];
 
-let index = 0;
-const slideImage = document.getElementById("slideImage");
-const captionText = document.getElementById("captionText");
+var index = 0;
 
-function showSlide(i) {
-  slideImage.src = slides[i].img;
-  captionText.textContent = slides[i].text;
+function showSlide() {
+  document.getElementById("slideImage").src = slides[index].img;
+  document.getElementById("slideCaption").innerText = slides[index].caption;
 }
+
 function nextSlide() {
   index = (index + 1) % slides.length;
-  showSlide(index);
+  showSlide();
 }
+
 function prevSlide() {
   index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
+  showSlide();
 }
-showSlide(index);
+
 setInterval(nextSlide, 4000);
 </script>
-
-  <footer>
-  <div class="footer-container">
-
-    <div class="footer-box">
-      <h3>Evaluasi Geografi</h3>
-      <p>
-        Website tugas evaluasi mata pelajaran
-        Geografi mengenai kondisi lingkungan Kecamatan Batununggal.
-      </p>
-    </div>
-
-    <div class="footer-box">
-      <h3>Navigasi</h3>
-      <p><a href="index.html">Home</a></p>
-      <p><a href="sejarah.html">Sejarah</a></p>
-      <p><a href="air.html">Air</a></p>
-      <p><a href="udara.html">Udara</a></p>
-      <p><a href="tanah.html">Tanah</a></p>
-      <p><a href="analisis.html">Analisis</a></p>
-    </div>
-
-    <div class="footer-box">
-      <h3>Identitas</h3>
-      <p>Nama: Mochamad Dava Syaputra</p>
-      <p>Kelas: XI-2</p>
-      <p>Mata Pelajaran: Geografi</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Mochamad Dava Syaputra • Evaluasi Geografi
-  </div>
-</footer>
 
 </body>
 </html>
