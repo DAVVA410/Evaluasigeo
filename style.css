@@ -169,3 +169,47 @@ body {
   font-size: 14px;
   color: #444;
 }
+/* SLIDER */
+.slider {
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slides {
+  display: flex;
+  animation: slide 8s infinite;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.slide img,
+.slide video {
+  width: 100%;
+  display: block;
+}
+
+/* KETERANGAN POJOK KIRI BAWAH */
+.caption {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(10, 25, 55, 0.7);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* ANIMASI */
+@keyframes slide {
+  0%   { transform: translateX(0); }
+  45%  { transform: translateX(0); }
+  50%  { transform: translateX(-100%); }
+  95%  { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
